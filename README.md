@@ -13,7 +13,7 @@ This file sets up the interrupts you want to simulate.  An instance of the Inter
 
 * `via65c02.py`
 
-This file defines the VIA class.  In my sample, I've modeled a very simple shift register interrupt which, when enabled, creates a thread that polls the console, checking for a key press.  When it detects one it pulls the MPU IRQ pin low.  The class also sets up a callback to retreive the shift register contents when read.  To facilitate escaping to the monitor I've added code to capture <ESC>Q or <ESC>q.
+This file defines the VIA class.  In my sample, I've modeled a very simple shift register interrupt which, when enabled, creates a thread that polls the console, checking for a key press.  When it detects one it pulls the MPU IRQ pin low.  The class also sets up a callback to retreive the shift register contents when read.  To facilitate escaping to the monitor I've added code to capture `<ESC>Q` or `<ESC>q`.
 
 * `acia65c02.py`
 
