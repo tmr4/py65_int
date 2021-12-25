@@ -32,11 +32,26 @@ I've tried to minimize the changes to the core py65 modules.  The following modi
 
 * The py65 monitor simulates your build by steping through your code, instruction by instruction.  To handle interrupts, we need to check if any have been raised prior to each step. To do this add the following to the beginning of the the step method:
 
-`if (self.IRQ_pin == 0) and (self.p & self.INTERRUPT == 0):`
-
-`    self.irq()`
-
-`    self.IRQ_pin = 1`
+````
+if (self.IRQ_pin == 0) and (self.p & self.INTERRUPT == 0):
+    self.irq()
+    self.IRQ_pin = 1
+````
 
 This code calls the MPU's irq method if the IRQ pin has been pulled low AND if interrupts are enabled.  It then resets the IRQ pin.  This could be done elsewhere depending on your needs.
+
+3. `console.py`
+
+* Though not needed to handle interrupts generally, the following method addition to the console module is needed to run my sample:
+
+````
+def kbhit():
+    return msvcrt.kbhit()
+````
+
+4. `monitor.py`
+
+* Again, not needed to handle interrupts generally, but to properly break to the monitor on `<ESC>Q` in my sample you need to correct a a few bugs in the py65 monitor module.  In the `__init__`, `onecmd` and `_run` methods, add `self.unbuffered_stdin` as an argument to the call to `console.restore_mode`.
+
+
 
