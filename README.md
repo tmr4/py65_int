@@ -51,7 +51,7 @@ def kbhit():
 
 4. `monitor.py`
 
-* Again, not needed to handle interrupts generally, but to properly break to the monitor on `<ESC>Q` in my sample you need to correct a a few bugs in the py65 monitor module.  In the `__init__`, `onecmd` and `_run` methods, add `self.unbuffered_stdin` as an argument to the call to `console.restore_mode`.
+* Again, not needed to handle interrupts generally, but to properly break to the monitor on `<ESC>Q` in my sample you need to correct a few bugs in the py65 monitor module.  In the `__init__`, `onecmd` and `_run` methods, add `self.unbuffered_stdin` as an argument to the call to `console.restore_mode`.
 
 
 
