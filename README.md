@@ -53,5 +53,9 @@ def kbhit():
 
 * Again, not needed to handle interrupts generally, but to properly break to the monitor on `<ESC>Q` in my sample you need to correct a few bugs in the py65 monitor module.  In the `__init__`, `onecmd` and `_run` methods, add `self.unbuffered_stdin` as an argument to the call to `console.restore_mode`.
 
+5. `mpu6502.py`
+
+* Note that pip contains version 1.1.0 of py65.  If you have this version you will also need to copy the irq method from the mpu6502 module from version 2.0.0.dev0 on GitHub to use my sample code.  Alternatively, you can modify the development version of the py65 monitor and run it separately from your pip downloaded version.
+
 
 
