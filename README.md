@@ -1,3 +1,7 @@
+# Status as of January 29, 2022
+
+Now that I've learned a bit more Python, I've decided to create a package that works on top of py65 rather than modifies it.  I've incorporated interrupts into my 65816 simulation while maintaining the py65 installation intact.  See [py65816](https://github.com/tmr4/py65816) for a version with interrupts.  This is where I'll be making future updates to the simulating interrupts.
+
 # Handling 6502 interrupts in py65
 Py65 (https://github.com/mnaberez/py65) is a great simulator for the 6502.  It doesn't handle interrupts though, so if you use interrupt driven I/O in your 6502 project you'll have to modify your code to simulate it in py65.  This could be as simple as defining new getc and putc routines to map py65 I/O to the same addresses as used in your interrupt I/O.  However, maintaining a separate version of your code for simulation may be a hassle if you add more interrupts or if they get too complex.  Luckily, py65 is open-source and modifying it to handle interrupts isn't very difficult.
 
